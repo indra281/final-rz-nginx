@@ -45,6 +45,6 @@
 class nginx {
   include nginx::package
   include nginx::service
-  #include nginx::config
+  include nginx::config
 
 }
