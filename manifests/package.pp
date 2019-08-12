@@ -6,7 +6,7 @@ class nginx::package {
     ensure => installed,
   }
 
-  package {['gcc', 'make', 'automake', 'autoconf', 'libtool', 'pcre', 'pcre-devel', 'libxml2', 'libxml2-devel', 'curl', 'curl-devel', 'httpd-devel']:
+  package {['gcc', 'make', 'automake', 'autoconf', 'libtool', 'pcre', 'pcre-devel', 'libxml2', 'libxml2-devel', 'curl', 'curl-devel', 'httpd-devel', 'gc', 'gcc++', '*gcc-c++*']:
     ensure => installed,
     }
 }
