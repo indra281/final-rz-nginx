@@ -33,13 +33,13 @@ class nginx::config {
 
   exec {'run build.sh':
         cwd     => '/home/ModSecurity',
-        command => './build.sh' ,
+        command => 'bash build.sh' ,
         path    => ['/usr/bin', '/usr/sbin',],
     }
 
   exec {'run configure':
         cwd     => '/home/ModSecurity',
-        command => './configure' ,
+        command => 'bash configure' ,
         path    => ['/usr/bin', '/usr/sbin',],
     }
 
