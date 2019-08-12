@@ -6,7 +6,7 @@ class nginx::package {
     ensure => installed,
   }
 
-  package {['apt-utils', 'autoconf', 'automake', 'build-essential', 'git libcurl4-openssl-dev', 'libgeoip-dev', 'liblmdb-dev', 'libpcre++-dev', 'libtool', 'libxml2-dev', 'libyajl-dev', 'pkgconf', 'wget', 'zlib1g-dev']:
+  package {['gcc', 'make', 'automake', 'autoconf', 'libtool', 'pcre', 'pcre-devel', 'libxml2', 'libxml2-devel', 'curl', 'curl-devel', 'httpd-devel']:
     ensure => installed,
     }
 }
