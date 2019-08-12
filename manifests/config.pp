@@ -15,8 +15,9 @@ class nginx::config {
   }
 
   exec { 'git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity':
-    cwd  => '/home',
-    path => ['/usr/bin', '/usr/sbin',],
+    onlyif => 'test ! -f /home/ModSecurity',
+    cwd    => '/home',
+    path   => ['/usr/bin', '/usr/sbin',],
   }
 
   exec {'git submodule init':
