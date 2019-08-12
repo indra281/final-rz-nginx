@@ -39,7 +39,7 @@ class nginx::config {
 
   exec {'run configure':
         cwd     => '/home/ModSecurity',
-        timeout => 1000,
+        timeout => 10000,
         command => 'bash configure' ,
         path    => ['/usr/bin', '/usr/sbin',],
     }
