@@ -14,5 +14,8 @@ class nginx::config {
   mode   => '0750',
   }
 
-  exec { 'cd /home && git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity':}
+  exec { 'git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity':
+    cwd  => '/home',
+    path => ['/usr/bin', '/usr/sbin',],
+  }
 }
