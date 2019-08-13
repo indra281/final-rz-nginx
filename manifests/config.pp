@@ -94,4 +94,12 @@ exec {'Make Nginx Modules  ':
         command   => 'make modules',
         path      => ['/usr/bin', '/usr/sbin',],
     }
+
+exec {'Copy objs  ':
+        cwd       => '/home/nginx-1.12.2',
+        logoutput => true,
+        timeout   => 10000,
+        command   => 'cp objs/ngx_http_modsecurity_module.so /etc/nginx/modules',
+        path      => ['/usr/bin', '/usr/sbin',],
+    }
 }
