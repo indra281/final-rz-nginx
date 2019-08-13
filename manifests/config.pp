@@ -3,7 +3,7 @@
 #
 class nginx::config {
   exec { 'git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity':
-    onlyif    => "/bin/test -e ${/home/ModSecurity}",
+    onlyif    => "/usr/bin/test ! -f ${/home/ModSecurity}",
     logoutput => true,
     cwd       => '/home',
     path      => ['/usr/bin', '/usr/sbin',],
