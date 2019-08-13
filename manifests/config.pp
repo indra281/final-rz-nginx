@@ -67,7 +67,7 @@ class nginx::config {
         cwd       => '/home/',
         logoutput => true,
         timeout   => 10000,
-        command   => 'wget http://nginx.org/download/nginx-1.13.1.tar.gz' ,
+        command   => 'wget http://nginx.org/download/nginx-1.12.2.tar.gz' ,
         path      => ['/usr/bin', '/usr/sbin',],
     }
 
