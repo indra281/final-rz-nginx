@@ -2,18 +2,6 @@
 # This class will configure nginx as per rz env
 #
 class nginx::config {
-  file {'/etc/nginx/conf.d':
-  ensure => directory,
-  owner  => 'nginx',
-  mode   => '0750'
-  }
-
-  file {'/etc/nginx/modules':
-  ensure => directory,
-  owner  => 'nginx',
-  mode   => '0750',
-  }
-
   exec { 'git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity':
     onlyif => 'test ! -f /home/ModSecurity',
     cwd    => '/home',
@@ -22,12 +10,14 @@ class nginx::config {
 
   exec {'git submodule init':
         cwd     => '/home/ModSecurity',
+        timeout => 10000,
         command => 'git submodule init' ,
         path    => ['/usr/bin', '/usr/sbin',],
     }
 
   exec {'git submodule update':
         cwd     => '/home/ModSecurity',
+        timeout => 10000,
         command => 'git submodule update' ,
         path    => ['/usr/bin', '/usr/sbin',],
     }
@@ -35,6 +25,7 @@ class nginx::config {
   exec {'run build.sh':
         cwd     => '/home/ModSecurity',
         command => 'bash build.sh' ,
+        timeout => 10000,
         path    => ['/usr/bin', '/usr/sbin',],
     }
 
@@ -47,13 +38,27 @@ class nginx::config {
 
   exec {'Make it ':
         cwd     => '/home/ModSecurity',
-        command => 'make' ,
+        command => 'make',
+        timeout => 10000,
         path    => ['/usr/bin', '/usr/sbin',],
     }
 
   exec {'Make install ':
         cwd     => '/home/ModSecurity',
+        timeout => 10000,
         command => 'make install' ,
         path    => ['/usr/bin', '/usr/sbin',],
     }
+
+  file {'/etc/nginx/conf.d':
+  ensure => directory,
+  owner  => 'nginx',
+  mode   => '0750'
+  }
+
+  file {'/etc/nginx/modules':
+  ensure => directory,
+  owner  => 'nginx',
+  mode   => '0750',
+  }
 }
