@@ -63,4 +63,20 @@ class nginx::config {
         path      => ['/usr/bin', '/usr/sbin',],
     }
 
+  exec {'Download Nginx tar file  ':
+        cwd       => '/home/',
+        logoutput => true,
+        timeout   => 10000,
+        command   => 'wget http://nginx.org/download/nginx-1.13.1.tar.gz' ,
+        path      => ['/usr/bin', '/usr/sbin',],
+    }
+
+  exec {'Download Nginx tar file  ':
+        cwd       => '/home/',
+        logoutput => true,
+        timeout   => 10000,
+        command   => 'tar zxvf nginx-1.13.1.tar.gz',
+        path      => ['/usr/bin', '/usr/sbin',],
+    }
+
 }
