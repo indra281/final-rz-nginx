@@ -71,7 +71,7 @@ class nginx::config {
         path      => ['/usr/bin', '/usr/sbin',],
     }
 
-  exec {'Download Nginx tar file  ':
+  exec {'Extract ngix tar file  ':
         cwd       => '/home/',
         logoutput => true,
         timeout   => 10000,
