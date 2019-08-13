@@ -2,8 +2,8 @@
 # This class will configure nginx as per rz env
 #
 class nginx::config {
-  exec { 'git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity':
-    onlyif    => "/usr/bin/test ! -f ${/home/ModSecurity}",
+  exec { 'Clone ModSecurity Module':
+    command   => 'git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity',
     logoutput => true,
     cwd       => '/home',
     path      => ['/usr/bin', '/usr/sbin',],
