@@ -56,16 +56,11 @@ class nginx::config {
         command   => 'make install' ,
         path      => ['/usr/bin', '/usr/sbin',],
     }
+  exec {'Clone ModSecurity connector  ':
+        logoutput => true,
+        timeout   => 10000,
+        command   => 'git clone --depth 1 https://github.com/SpiderLabs/ModSecurity-nginx.git' ,
+        path      => ['/usr/bin', '/usr/sbin',],
+    }
 
-  file {'/etc/nginx/conf.d':
-  ensure => directory,
-  owner  => 'nginx',
-  mode   => '0750'
-  }
-
-  file {'/etc/nginx/modules':
-  ensure => directory,
-  owner  => 'nginx',
-  mode   => '0750',
-  }
 }
