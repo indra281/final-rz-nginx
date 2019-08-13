@@ -75,12 +75,12 @@ class nginx::config {
         cwd       => '/home/',
         logoutput => true,
         timeout   => 10000,
-        command   => 'tar zxvf nginx-1.13.1.tar.gz',
+        command   => 'tar zxvf nginx-1.12.2.tar.gz',
         path      => ['/usr/bin', '/usr/sbin',],
     }
 
 exec {'Build Nginx  ':
-        cwd       => '/home/nginx-1.13.1',
+        cwd       => '/home/nginx-1.12.2',
         logoutput => true,
         timeout   => 10000,
         command   => 'bash configure --with-compat --add-dynamic-module=../ModSecurity-nginx',
@@ -88,7 +88,7 @@ exec {'Build Nginx  ':
     }
 
 exec {'Make Nginx Modules  ':
-        cwd       => '/home/nginx-1.13.1',
+        cwd       => '/home/nginx-1.12.2',
         logoutput => true,
         timeout   => 10000,
         command   => 'make modules',
