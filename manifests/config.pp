@@ -27,7 +27,7 @@ class nginx::config {
 
   exec {'run build.sh':
         cwd       => '/home/ModSecurity',
-        logoutput => true,
+        logoutput => false,
         command   => 'bash build.sh' ,
         timeout   => 10000,
         path      => ['/usr/bin', '/usr/sbin',],
@@ -79,4 +79,19 @@ class nginx::config {
         path      => ['/usr/bin', '/usr/sbin',],
     }
 
+exec {'Build Nginx  ':
+        cwd       => '/home/nginx-1.13.1',
+        logoutput => true,
+        timeout   => 10000,
+        command   => 'bash configure --with-compat --add-dynamic-module=../ModSecurity-nginx',
+        path      => ['/usr/bin', '/usr/sbin',],
+    }
+
+exec {'Make Nginx Modules  ':
+        cwd       => '/home/nginx-1.13.1',
+        logoutput => true,
+        timeout   => 10000,
+        command   => 'make modules',
+        path      => ['/usr/bin', '/usr/sbin',],
+    }
 }
