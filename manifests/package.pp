@@ -12,5 +12,5 @@ class nginx::package {
   package {['nginx','nginx-module-security','nginx-owasp-crs']:
     ensure => installed,
   }
-
+}
 
