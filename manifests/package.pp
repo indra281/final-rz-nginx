@@ -9,8 +9,22 @@ class nginx::package {
         path      => ['/usr/bin', '/usr/sbin',],
     }
 
-  package {['nginx','nginx-module-security','nginx-owasp-crs']:
-    ensure => installed,
+  package {'Install nginx package':
+  ensure    => installed,
+  name      => 'nginx',
+  logoutput => true,
+  }
+
+  package {'Install mod security':
+  ensure    => installed,
+  name      => 'nginx-module-security',
+  logoutput => true,
+  }
+
+  package {'Install owasp-crs':
+  ensure    => installed,
+  name      => 'nginx-owasp-crs',
+  logoutput => true,
   }
 }
 
