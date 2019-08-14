@@ -43,6 +43,6 @@
 # Copyright 2019 Your name here, unless otherwise noted.
 #
 class nginx {
-  include nginx::config
+  include package::config
 
 }
