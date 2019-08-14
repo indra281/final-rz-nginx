@@ -10,21 +10,18 @@ class nginx::package {
     }
 
   package {'Install nginx package':
-  ensure    => installed,
-  name      => 'nginx',
-  logoutput => true,
+  ensure => installed,
+  name   => 'nginx',
   }
 
   package {'Install mod security':
-  ensure    => installed,
-  name      => 'nginx-module-security',
-  logoutput => true,
+  ensure => installed,
+  name   => 'nginx-module-security',
   }
 
   package {'Install owasp-crs':
-  ensure    => installed,
-  name      => 'nginx-owasp-crs',
-  logoutput => true,
+  ensure => installed,
+  name   => 'nginx-owasp-crs',
   }
 }
 
