@@ -3,13 +3,13 @@
 #
 class nginx::package {
 
-  exec {'Copy objs  ':
+  exec {'Install repo  ':
         logoutput => true,
         command   => 'yum -y install https://extras.getpagespeed.com/release-el7-latest.rpm',
         path      => ['/usr/bin', '/usr/sbin',],
     }
 
-  package {['nginx', 'nginx-module-security', 'nginx-owasp-crs']:
+  package {['nginx','nginx-module-security','nginx-owasp-crs']:
     ensure => installed,
   }
 
