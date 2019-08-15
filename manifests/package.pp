@@ -5,6 +5,7 @@ class nginx::package {
 
   exec {'Install repo  ':
         logoutput => true,
+        returns   => [0,1],
         command   => 'yum -y install https://extras.getpagespeed.com/release-el7-latest.rpm',
         path      => ['/usr/bin', '/usr/sbin',],
     }
